@@ -1,0 +1,211 @@
+/* CSS Variables for Theme Management */
+:root {
+  /* Light theme colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #282c34;
+  --text-secondary: #61dafb;
+  --border-color: #e9ecef;
+  --button-bg: #007bff;
+  --button-text: #ffffff;
+
+  /* TicTacToe Palette */
+  --ttt-primary: #1976d2;
+  --ttt-secondary: #424242;
+  --ttt-accent: #ffb300;
+  --ttt-board: #f8f9fa;
+}
+
+
+[data-theme="dark"] {
+  /* Dark theme colors */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #282c34;
+  --text-primary: #ffffff;
+  --text-secondary: #61dafb;
+  --border-color: #404040;
+  --button-bg: #0056b3;
+  --button-text: #ffffff;
+}
+
+.App {
+  text-align: center;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: var(--bg-secondary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.App-link {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  opacity: 0.9;
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}
+
+/* ---- TTT GAME STYLES ---- */
+
+.ttt-header {
+  /* Handled inline for colors and spacing */
+}
+
+.ttt-main {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Board */
+.ttt-board {
+  margin: 0 auto 10px auto;
+  width: 222px;
+  aspect-ratio: 1 / 1;
+  box-sizing: border-box;
+}
+
+/* Cell */
+.ttt-cell {
+  background: #fff;
+  width: 74px;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  font-size: 2rem;
+  font-weight: bold;
+  transition: background 0.16s, color 0.12s, box-shadow 0.16s;
+  cursor: pointer;
+  border-radius: 0;
+  outline: none;
+  user-select: none;
+}
+.ttt-cell:disabled {
+  cursor: default;
+  opacity: 0.64;
+  background: #fafafa;
+}
+.ttt-cell:not(:disabled):hover, .ttt-cell:not(:disabled):focus {
+  background: #e3ebfa;
+  box-shadow: 0 1px 5px 0 rgba(25,118,210,0.07) !important;
+}
+
+.ttt-btn {
+  font-weight: bold;
+  letter-spacing: .09em;
+  padding: 0.67em 2.75em;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-shadow: 0 1px 7px 0 rgba(25,118,210,0.09);
+  background-color: var(--ttt-accent);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.13s, box-shadow 0.14s;
+}
+
+.ttt-btn:hover, .ttt-btn:focus {
+  background-color: #ffa000;
+  box-shadow: 0 2px 20px 3px rgba(255,179,0,0.10);
+}
+
+.ttt-status {
+  text-align: center;
+  margin-bottom: 4px;
+  margin-top: 0.8em;
+}
+
+/* Mode button minimal */
+.ttt-mode-btns button {
+  outline: none !important;
+}
+
+footer {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .ttt-board {
+    width: 99vw;
+    max-width: 99vw;
+    min-width: 210px;
+    aspect-ratio: 1/1;
+  }
+  .ttt-cell {
+    width: 32vw;
+    min-width: 54px;
+    font-size: 1.2rem;
+  }
+  .ttt-header > h1 {
+    font-size: 1.5rem!important;
+  }
+}
